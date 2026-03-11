@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body class="page-body">
-
   <div class="frame page-frame">
     <div class="container page-container">
 
@@ -22,66 +21,35 @@
         </nav>
       </header>
 
-      <!-- Back arrow link — takes user back to the shop -->
       <a href="shop.html" class="back-link">← Back to Shop</a>
 
-      <!-- PRODUCT DETAIL LAYOUT -->
-      <!-- Two columns side by side: image left, info right -->
-      <!-- On mobile these stack vertically -->
       <div class="product-detail">
-
-        <!-- LEFT: Product image -->
         <div class="product-img-wrap">
-          <img src="https://picsum.photos/seed/aura1/600/700" alt="Oversized Vintage Tee">
+          <img id="product-image" src="" alt="">
         </div>
-
-        <!-- RIGHT: All the product info -->
         <div class="product-info">
-          <p class="product-category">Tops</p>
-          <h1 class="product-name">Oversized Vintage Tee</h1>
-          <p class="product-price">UGX 45,000</p>
-
-          <!-- Thin divider line -->
+          <p class="product-category" id="product-category"></p>
+          <h1 class="product-name" id="product-name"></h1>
+          <p class="product-price" id="product-price"></p>
           <hr class="divider">
-
-          <!-- SIZE SELECTOR -->
-          <!-- These are just styled radio buttons — no JS needed -->
           <div class="size-section">
             <p class="label">Select Size</p>
             <div class="size-options">
-              <!-- Each input is hidden, the <label> is what the user sees and clicks -->
               <input type="radio" name="size" id="s" value="S">
               <label for="s">S</label>
-
               <input type="radio" name="size" id="m" value="M" checked>
               <label for="m">M</label>
-
               <input type="radio" name="size" id="l" value="L">
               <label for="l">L</label>
-
               <input type="radio" name="size" id="xl" value="XL">
               <label for="xl">XL</label>
             </div>
           </div>
+          <div class="product-desc" id="product-desc"></div>
+          <ul class="product-details-list" id="product-details"></ul>
+        </div>
+      </div>
 
-          <!-- PRODUCT DESCRIPTION -->
-          <div class="product-desc">
-            <p>Cut from heavyweight cotton with a relaxed oversized silhouette. Washed for that broken-in vintage feel. No logo overload — just clean, confident pieces that let you carry the aura.</p>
-          </div>
-
-          <!-- Small details list -->
-          <ul class="product-details-list">
-            <li>100% heavyweight cotton</li>
-            <li>Washed & pre-shrunk</li>
-            <li>Unisex fit</li>
-            <li>Made to order</li>
-          </ul>
-
-        </div><!-- end .product-info -->
-      </div><!-- end .product-detail -->
-
-      <!-- BOTTOM PADDING so content isn't hidden behind the sticky button -->
-      <!-- The sticky button is 80px tall so we need at least that much padding -->
       <div style="height: 100px;"></div>
 
       <footer class="site-footer">
@@ -92,40 +60,528 @@
           <a href="contact.html">Contact</a>
         </div>
       </footer>
+    </div>
+  </div>
 
-    </div><!-- end .container -->
-  </div><!-- end .frame -->
-
-  <!-- =====================================================
-       STICKY BUY BAR
-       position:fixed means it ALWAYS stays at the bottom
-       of the screen no matter where you scroll.
-       z-index:100 makes sure it floats above everything.
-  ====================================================== -->
+  <!-- STICKY BUY BAR -->
   <div class="sticky-buy-bar">
     <div class="sticky-buy-inner">
-
-      <!-- WhatsApp button — only on this product page as requested -->
-      <!-- wa.me is WhatsApp's official link format -->
-      <!-- The message is pre-filled so the customer doesn't have to type -->
-      <a
-        href="https://wa.me/256788214610?text=Hi%2C%20I%27m%20interested%20in%20the%20Oversized%20Vintage%20Tee"
-        class="btn-whatsapp"
-        target="_blank"   
-        rel="noopener"    
-      >
-        <!-- WhatsApp SVG icon -->
+      <a id="whatsapp-btn" href="#" class="btn-whatsapp" target="_blank" rel="noopener">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
         </svg>
         Chat with us
       </a>
-
-      <!-- Main buy button -->
-      <button class="btn-buy">Buy Now — UGX 45,000</button>
-
+      <!-- This button now OPENS the checkout modal instead of doing nothing -->
+      <button class="btn-buy" id="buy-btn" onclick="openCheckout()">Buy Now</button>
     </div>
   </div>
+
+
+  <!-- ================================================================
+       CHECKOUT MODAL
+       ================================================================
+       This is a full-screen overlay that slides up from the bottom
+       when the user clicks "Buy Now".
+
+       It has MULTIPLE STEPS inside it. Only one step is visible
+       at a time — JS hides and shows them as the user progresses.
+
+       The overlay starts hidden (class "hidden" in CSS = display:none).
+       JS removes "hidden" to show it, adds it back to close it.
+  ================================================================ -->
+  <div class="checkout-overlay hidden" id="checkout-overlay">
+
+    <!-- Clicking the dark background behind the modal closes it -->
+    <div class="checkout-backdrop" onclick="closeCheckout()"></div>
+
+    <div class="checkout-modal">
+
+      <!-- MODAL HEADER: title + close button -->
+      <div class="checkout-header">
+        <h2 class="checkout-title" id="checkout-title">Checkout</h2>
+        <button class="checkout-close" onclick="closeCheckout()">✕</button>
+      </div>
+
+      <!-- PROGRESS BAR: thin line that fills as steps progress -->
+      <!-- width is updated by JS as the user moves through steps -->
+      <div class="checkout-progress">
+        <div class="checkout-progress-fill" id="progress-fill"></div>
+      </div>
+
+      <!-- ============================================================
+           STEP 1: DELIVERY OR PICKUP
+           ============================================================
+           Two big tap-able option cards.
+           Tapping one stores the choice and moves to the next step.
+      ============================================================ -->
+      <div class="checkout-step" id="step-1">
+        <p class="step-label">Step 1 of 3</p>
+        <h3 class="step-heading">How do you want to get it?</h3>
+
+        <div class="option-cards">
+
+          <!-- onclick calls chooseDelivery("pickup") — defined in JS below -->
+          <div class="option-card" onclick="chooseDelivery('pickup')">
+            <span class="option-icon">🏪</span>
+            <div>
+              <p class="option-title">Pickup</p>
+              <p class="option-sub">Collect from our location</p>
+            </div>
+          </div>
+
+          <div class="option-card" onclick="chooseDelivery('delivery')">
+            <span class="option-icon">🚚</span>
+            <div>
+              <p class="option-title">Delivery</p>
+              <p class="option-sub">We bring it to you </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ============================================================
+           STEP 2: CUSTOMER DETAILS
+           ============================================================
+           Name and phone number. If delivery was chosen, also ask
+           for delivery address.
+      ============================================================ -->
+      <div class="checkout-step hidden" id="step-2">
+        <p class="step-label">Step 2 of 3</p>
+        <h3 class="step-heading">Your details</h3>
+
+        <div class="checkout-form">
+
+          <div class="checkout-field">
+            <label for="c-name">Full Name</label>
+            <input type="text" id="c-name" placeholder="e.g. John Mugisha">
+          </div>
+
+          <div class="checkout-field">
+            <label for="c-phone">Phone Number</label>
+            <!-- type="tel" shows the number keyboard on phones -->
+            <input type="tel" id="c-phone" placeholder="e.g. 078 812 3456">
+          </div>
+
+          <!-- This field only shows if the user chose Delivery -->
+          <!-- It starts hidden. JS shows it if delivery was selected -->
+          <div class="checkout-field hidden" id="address-field">
+            <label for="c-address">Delivery Address</label>
+            <input type="text" id="c-address" placeholder="e.g. Ntinda, Kampala">
+          </div>
+
+        </div>
+
+        <button class="checkout-next-btn" onclick="submitDetails()">Continue →</button>
+      </div>
+
+      <!-- ============================================================
+           STEP 3: PAYMENT METHOD
+           ============================================================
+           Three options: Cash, Airtel Money, MTN MoMo
+      ============================================================ -->
+      <div class="checkout-step hidden" id="step-3">
+        <p class="step-label">Step 3 of 3</p>
+        <h3 class="step-heading">How do you want to pay?</h3>
+
+        <div class="option-cards">
+
+          <div class="option-card" onclick="choosePayment('cash')">
+            <span class="option-icon">💵</span>
+            <div>
+              <p class="option-title">Cash</p>
+              <p class="option-sub">Pay when you pick up or receive</p>
+            </div>
+          </div>
+
+          <div class="option-card" onclick="choosePayment('airtel')">
+            <!-- Airtel red color dot as a visual cue -->
+            <span class="option-icon momo-icon airtel-icon">A</span>
+            <div>
+              <p class="option-title">Airtel Money</p>
+              <p class="option-sub">Send to our number</p>
+            </div>
+          </div>
+
+          <div class="option-card" onclick="choosePayment('mtn')">
+            <!-- MTN yellow color dot -->
+            <span class="option-icon momo-icon mtn-icon">M</span>
+            <div>
+              <p class="option-title">MTN Mobile Money</p>
+              <p class="option-sub">Send to our number</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ============================================================
+           STEP 4A: MOBILE MONEY INSTRUCTIONS
+           ============================================================
+           Shown when Airtel or MTN is selected.
+           Tells the user exactly how to send the money.
+           Also has a WhatsApp button to confirm payment.
+      ============================================================ -->
+      <div class="checkout-step hidden" id="step-momo">
+        <h3 class="step-heading" id="momo-heading">Send via MTN MoMo</h3>
+
+        <!-- The order summary box — amounts filled in by JS -->
+        <div class="order-summary">
+          <div class="summary-row">
+            <span id="summary-product-name">Product</span>
+            <span id="summary-price">UGX 0</span>
+          </div>
+          <div class="summary-row summary-row-total">
+            <span>Total</span>
+            <span id="summary-total">UGX 0</span>
+          </div>
+        </div>
+
+        <!-- Step-by-step mobile money instructions -->
+        <div class="momo-steps">
+          <p class="momo-label">How to pay:</p>
+          <ol class="momo-list">
+            <!-- id="momo-number" gets updated by JS based on Airtel vs MTN -->
+            <li>Dial <strong id="momo-dial-code">*165#</strong> on your phone</li>
+            <li>Select <strong>Send Money</strong></li>
+            <li>Enter number: <strong id="momo-number" class="momo-highlight">0788 214 610</strong></li>
+            <li>Enter amount: <strong id="momo-amount" class="momo-highlight">UGX 0</strong></li>
+            <li>Use your name as reference</li>
+            <li>Confirm with your PIN</li>
+          </ol>
+        </div>
+
+        <!-- After sending, tap this to notify the store on WhatsApp -->
+        <a id="momo-whatsapp-btn" href="#" class="checkout-whatsapp-btn" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Tap here after sending — confirm on WhatsApp
+        </a>
+      </div>
+
+      <!-- ============================================================
+           STEP 4B: CASH CONFIRMATION
+           ============================================================
+           Shown when Cash is selected. Just confirms the order.
+      ============================================================ -->
+      <div class="checkout-step hidden" id="step-cash">
+        <div class="success-icon">✓</div>
+        <h3 class="step-heading">Order Confirmed!</h3>
+
+        <div class="order-summary">
+          <div class="summary-row">
+            <span id="cash-summary-name">Product</span>
+            <span id="cash-summary-price">UGX 0</span>
+          </div>
+          <div class="summary-row">
+            <span>Payment</span>
+            <span>Cash on <span id="cash-delivery-method">pickup</span></span>
+          </div>
+          <div class="summary-row summary-row-total">
+            <span>Total Due</span>
+            <span id="cash-summary-total">UGX 0</span>
+          </div>
+        </div>
+
+        <p class="cash-note" id="cash-note">We'll contact you shortly to confirm your order.</p>
+
+        <!-- Sends a WhatsApp message to notify the store of the order -->
+        <a id="cash-whatsapp-btn" href="#" class="checkout-whatsapp-btn" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Notify us on WhatsApp
+        </a>
+      </div>
+
+    </div><!-- end .checkout-modal -->
+  </div><!-- end .checkout-overlay -->
+
+
+  <script>
+    // ================================================================
+    // PRODUCTS DATA (same as before)
+    // ================================================================
+    const products = [
+      { id: 1, name: "Vintage Tee",    price: "UGX 45,000", rawPrice: "45,000", badge: "NEW", image: src ="D:\\programming stuff\\websites\\aura store\\images\\shirt.jfif" , category: "Tops",        description: "Cut from heavyweight cotton with a relaxed oversized silhouette. Washed for that broken-in vintage feel.", details: ["100% heavyweight cotton","Washed & pre-shrunk","Unisex fit","Made to order"] },
+      { id: 2, name: "Relaxed Cargo Pants",      price: "UGX 85,000", rawPrice: "85,000", badge: "",    image: src ="D:\\programming stuff\\websites\\aura store\\images\\baggypants.jfif" , category: "Bottoms",     description: "Wide-leg cargo cut with deep side pockets and a relaxed waist. Built for movement, styled for the streets.", details: ["Heavy-duty cotton twill","6-pocket design","Drawstring + button waist","Unisex fit"] },
+      { id: 3, name: "Washed Pullover Hoodie",   price: "UGX 95,000", rawPrice: "95,000", badge: "HOT", image: src ="D:\\programming stuff\\websites\\aura store\\images\\hoodie.jfif" , category: "Tops",        description: "Garment-washed for that soft, lived-in feel. Dropped shoulders, kangaroo pocket, minimal branding.", details: ["400gsm fleece","Garment washed","Dropped shoulder fit","Kangaroo front pocket"] },
+      { id: 4, name: "Jorts",           price: "UGX 55,000", rawPrice: "55,000", badge: "",    image: src ="D:\\programming stuff\\websites\\aura store\\images\\shorts.jfif" , category: "Bottoms",     description: "Relaxed-fit utility shorts with cargo pockets and an elastic waistband.", details: ["Lightweight cotton blend","Elastic + drawstring waist","Cargo side pockets","Unisex sizing"] },
+      { id: 5, name: "Custom Cap",            price: "UGX 35,000", rawPrice: "35,000", badge: "NEW", image: src ="D:\\programming stuff\\websites\\aura store\\images\\cap.jfif" , category: "Accessories", description: "Six-panel structured cap with embroidered floral pattern . Adjustable strap fits all.", details: ["6-panel structured fit","Embroidered flowers","Adjustable back strap","One size fits all"] },
+      { id: 6, name: "Lightweight Coach Jacket", price: "UGX 120,000", rawPrice: "120,000", badge: "",  image: src ="D:\\programming stuff\\websites\\aura store\\images\\jacket.jfif" , category: "Outerwear",   description: "A clean coach jacket in a lightweight nylon shell. Zip-through front, side pockets, subtle branding.", details: ["Lightweight nylon shell","Full zip front","Two side pockets","Relaxed fit"] }
+    ];
+
+    // ================================================================
+    // LOAD PRODUCT FROM URL (same as before)
+    // ================================================================
+    const productId = Number(new URLSearchParams(window.location.search).get("id"));
+    const product = products.find(function(p) { return p.id === productId; });
+
+    if (!product) {
+      window.location.href = "shop.html";
+    } else {
+      document.title = `AURA — ${product.name}`;
+      document.getElementById("product-image").src = product.image;
+      document.getElementById("product-image").alt = product.name;
+      document.getElementById("product-category").textContent = product.category;
+      document.getElementById("product-name").textContent = product.name;
+      document.getElementById("product-price").textContent = product.price;
+      document.getElementById("product-desc").innerHTML = `<p>${product.description}</p>`;
+      const detailsList = document.getElementById("product-details");
+      product.details.forEach(function(d) { detailsList.innerHTML += `<li>${d}</li>`; });
+      document.getElementById("buy-btn").textContent = `Buy Now — ${product.price}`;
+      const waMsg = encodeURIComponent(`Hi, I'm interested in the ${product.name}`);
+      document.getElementById("whatsapp-btn").href = `https://wa.me/256788214610?text=${waMsg}`;
+    }
+
+    // ================================================================
+    // CHECKOUT STATE
+    // ================================================================
+    // We need to remember the user's choices as they move through steps.
+    // We store them in an object called 'order'.
+    // This object starts empty and gets filled in as the user progresses.
+    //
+    // Think of it like a form being filled out — each step adds more info.
+    // ================================================================
+
+    const order = {
+      deliveryMethod: "",   // "pickup" or "delivery"
+      name: "",             // customer's name
+      phone: "",            // customer's phone
+      address: "",          // delivery address (if delivery chosen)
+      paymentMethod: "",    // "cash", "airtel", or "mtn"
+      size: "M"             // selected size
+    };
+
+    // ================================================================
+    // HELPER: showStep(stepId)
+    // ================================================================
+    // This function hides ALL steps then shows just the one we want.
+    //
+    // querySelectorAll(".checkout-step") returns ALL elements with that class.
+    // forEach loops through them and adds "hidden" to each (hiding them all).
+    // Then we find the specific step by ID and remove "hidden" (showing it).
+    //
+    // We also update the progress bar width based on which step we're on.
+    // ================================================================
+
+    function showStep(stepId) {
+      // Hide all steps first
+      document.querySelectorAll(".checkout-step").forEach(function(el) {
+        el.classList.add("hidden");
+      });
+
+      // Show the target step
+      document.getElementById(stepId).classList.remove("hidden");
+
+      // Update the progress bar
+      // Each step maps to a percentage of the bar being filled
+      const progressMap = {
+        "step-1":    "33%",
+        "step-2":    "66%",
+        "step-3":    "90%",
+        "step-momo": "100%",
+        "step-cash": "100%"
+      };
+
+      // progressMap[stepId] looks up the percentage for this step
+      // e.g. progressMap["step-2"] = "66%"
+      document.getElementById("progress-fill").style.width = progressMap[stepId] || "33%";
+    }
+
+    // ================================================================
+    // OPEN / CLOSE CHECKOUT MODAL
+    // ================================================================
+
+    function openCheckout() {
+      // Get the selected size before opening
+      // document.querySelector checks which radio button is currently checked
+      const checkedSize = document.querySelector('input[name="size"]:checked');
+      if (checkedSize) order.size = checkedSize.value;
+
+      // Show the modal overlay
+      document.getElementById("checkout-overlay").classList.remove("hidden");
+
+      // Always start at step 1 when opening
+      showStep("step-1");
+
+      // Prevent the page behind from scrolling while modal is open
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeCheckout() {
+      document.getElementById("checkout-overlay").classList.add("hidden");
+      // Restore scrolling
+      document.body.style.overflow = "";
+    }
+
+    // ================================================================
+    // STEP 1 HANDLER: chooseDelivery(method)
+    // ================================================================
+    // Called when user taps "Pickup" or "Delivery" card.
+    // 'method' is either the string "pickup" or "delivery".
+    // ================================================================
+
+    function chooseDelivery(method) {
+      // Save the choice to our order object
+      order.deliveryMethod = method;
+
+      // The address field should only show if delivery was chosen.
+      // We find it and either add or remove the "hidden" class.
+      const addressField = document.getElementById("address-field");
+      if (method === "delivery") {
+        addressField.classList.remove("hidden"); // show address field
+      } else {
+        addressField.classList.add("hidden");    // hide it for pickup
+      }
+
+      // Move to step 2
+      showStep("step-2");
+    }
+
+    // ================================================================
+    // STEP 2 HANDLER: submitDetails()
+    // ================================================================
+    // Called when user taps "Continue" on the details form.
+    // Reads the form values, validates them, saves to order object.
+    //
+    // .value = reads what the user typed into an input field
+    // .trim() = removes any accidental spaces at the start/end
+    // ================================================================
+
+    function submitDetails() {
+      const name    = document.getElementById("c-name").value.trim();
+      const phone   = document.getElementById("c-phone").value.trim();
+      const address = document.getElementById("c-address").value.trim();
+
+      // VALIDATION: make sure name and phone aren't empty
+      // If they are, alert the user and stop — don't go to next step
+      if (!name || !phone) {
+        alert("Please enter your name and phone number.");
+        return; // 'return' exits the function early — stops here
+      }
+
+      // If delivery was chosen, also require an address
+      if (order.deliveryMethod === "delivery" && !address) {
+        alert("Please enter your delivery address.");
+        return;
+      }
+
+      // All good — save to order object
+      order.name    = name;
+      order.phone   = phone;
+      order.address = address;
+
+      // Move to step 3
+      showStep("step-3");
+    }
+
+    // ================================================================
+    // STEP 3 HANDLER: choosePayment(method)
+    // ================================================================
+    // Called when user taps a payment option card.
+    // 'method' is "cash", "airtel", or "mtn".
+    // ================================================================
+
+    function choosePayment(method) {
+      order.paymentMethod = method;
+
+      if (method === "cash") {
+        // Show the cash confirmation step
+        showCashConfirmation();
+      } else {
+        // Show the mobile money instructions step
+        showMomoInstructions(method);
+      }
+    }
+
+    // ================================================================
+    // MOBILE MONEY INSTRUCTIONS: showMomoInstructions(method)
+    // ================================================================
+    // Fills in the momo instructions step with the right details
+    // based on whether Airtel or MTN was chosen.
+    // ================================================================
+
+    function showMomoInstructions(method) {
+      // Different dial codes and numbers for Airtel vs MTN
+      // In Uganda:
+      //   MTN MoMo dial code: *165#
+      //   Airtel Money dial code: *185#
+      const isAirtel = method === "airtel";
+
+      document.getElementById("momo-heading").textContent =
+        isAirtel ? "Send via Airtel Money" : "Send via MTN MoMo";
+
+      document.getElementById("momo-dial-code").textContent =
+        isAirtel ? "*185#" : "*165#";
+
+      // The phone number to send to (your WhatsApp number)
+      document.getElementById("momo-number").textContent = "0788 214 610";
+
+      // Fill in the product name and amount
+      document.getElementById("summary-product-name").textContent = product.name;
+      document.getElementById("summary-price").textContent = product.price;
+      document.getElementById("summary-total").textContent = product.price;
+      document.getElementById("momo-amount").textContent = product.price;
+
+      // Build a pre-filled WhatsApp message for payment confirmation
+      // This makes it easy for the customer — they just tap and send
+      const msg = encodeURIComponent(
+        `Hi AURA! I just sent ${product.price} via ${isAirtel ? "Airtel Money" : "MTN MoMo"} for:\n` +
+        `• ${product.name} (Size: ${order.size})\n` +
+        `• Name: ${order.name}\n` +
+        `• Phone: ${order.phone}\n` +
+        (order.deliveryMethod === "delivery" ? `• Delivery to: ${order.address}\n` : `• Pickup\n`) +
+        `Please confirm my order. Thank you!`
+      );
+
+      document.getElementById("momo-whatsapp-btn").href =
+        `https://wa.me/256788214610?text=${msg}`;
+
+      showStep("step-momo");
+    }
+
+    // ================================================================
+    // CASH CONFIRMATION: showCashConfirmation()
+    // ================================================================
+    // Fills in the cash confirmation step.
+    // ================================================================
+
+    function showCashConfirmation() {
+      document.getElementById("cash-summary-name").textContent  = product.name;
+      document.getElementById("cash-summary-price").textContent = product.price;
+      document.getElementById("cash-summary-total").textContent = product.price;
+
+      // Show whether it's pickup or delivery in the summary
+      document.getElementById("cash-delivery-method").textContent =
+        order.deliveryMethod === "delivery" ? "delivery" : "pickup";
+
+      // If delivery, show a note about delivery fee
+      document.getElementById("cash-note").textContent =
+        order.deliveryMethod === "delivery"
+          ? `We'll reach out to ${order.name} on ${order.phone} to confirm delivery to ${order.address}.`
+          : `We'll reach out to ${order.name} on ${order.phone} to confirm your pickup time.`;
+
+      // Pre-filled WhatsApp notification for cash orders
+      const msg = encodeURIComponent(
+        `Hi AURA! I'd like to order:\n` +
+        `• ${product.name} (Size: ${order.size})\n` +
+        `• Payment: Cash\n` +
+        `• Name: ${order.name}\n` +
+        `• Phone: ${order.phone}\n` +
+        (order.deliveryMethod === "delivery" ? `• Delivery to: ${order.address}\n` : `• Pickup\n`) +
+        `Please confirm. Thank you!`
+      );
+
+      document.getElementById("cash-whatsapp-btn").href =
+        `https://wa.me/256788214610?text=${msg}`;
+
+      showStep("step-cash");
+    }
+
+  </script>
 
 </body>
 </html>

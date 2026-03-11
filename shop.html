@@ -8,14 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body class="page-body">
-  <!-- page-body class removes the overflow:hidden from the homepage body
-       so we can scroll through the product grid -->
-
   <div class="frame page-frame">
-    <!-- page-frame lets the frame grow with content instead of being locked to screen height -->
     <div class="container page-container">
 
-      <!-- Same navbar on every page — consistent branding -->
       <header class="navbar">
         <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">AURA</a></div>
         <nav class="nav-links">
@@ -26,88 +21,29 @@
         </nav>
       </header>
 
-      <!-- PAGE TITLE -->
       <div class="page-title">
         <h1>New Arrivals</h1>
-        <!-- The line under the title is a decorative <hr> styled in CSS -->
         <hr class="title-line">
       </div>
 
-      <!-- PRODUCT GRID -->
-      <!-- CSS grid will auto-arrange these cards into columns -->
-      <!-- On desktop: 3 columns. Tablet: 2. Phone: 1 -->
-      <div class="product-grid">
+      <!--
+        PRODUCT GRID
+        ===========
+        Before, each card had href="product.html" hardcoded.
+        Now each card links to product.html?id=1, product.html?id=2, etc.
+        The ?id=1 part is called a "query string" or "URL parameter".
+        It's like passing a note to the next page: "hey, show product number 1".
+        JavaScript on product.html will READ that note and load the right product.
+      -->
+      <div class="product-grid" id="product-grid">
+        <!-- 
+          We're going to GENERATE these cards with JavaScript below.
+          Instead of writing each card by hand in HTML,
+          JS will loop through our products list and build the HTML automatically.
+          That way adding a new product = just adding one line to the JS list.
+        -->
+      </div>
 
-        <!-- PRODUCT CARD — this repeats for each item -->
-        <!-- href points to product.html — in a real store each item would have its own ID -->
-        <a href="product.html" class="product-card">
-          <!-- Placeholder image — replace src with your Pinterest finds later -->
-          <div class="card-img-wrap">
-            <img src="https://picsum.photos/seed/aura1/400/500" alt="Oversized Tee">
-            <!-- "NEW" badge overlaid on top of the image -->
-            <span class="card-badge">NEW</span>
-          </div>
-          <div class="card-info">
-            <p class="card-name">Oversized Vintage Tee</p>
-            <p class="card-price">UGX 45,000</p>
-          </div>
-        </a>
-
-        <a href="product.html" class="product-card">
-          <div class="card-img-wrap">
-            <img src="https://picsum.photos/seed/aura2/400/500" alt="Cargo Pants">
-          </div>
-          <div class="card-info">
-            <p class="card-name">Relaxed Cargo Pants</p>
-            <p class="card-price">UGX 85,000</p>
-          </div>
-        </a>
-
-        <a href="product.html" class="product-card">
-          <div class="card-img-wrap">
-            <img src="https://picsum.photos/seed/aura3/400/500" alt="Hoodie">
-            <span class="card-badge">HOT</span>
-          </div>
-          <div class="card-info">
-            <p class="card-name">Washed Pullover Hoodie</p>
-            <p class="card-price">UGX 95,000</p>
-          </div>
-        </a>
-
-        <a href="product.html" class="product-card">
-          <div class="card-img-wrap">
-            <img src="https://picsum.photos/seed/aura4/400/500" alt="Shorts">
-          </div>
-          <div class="card-info">
-            <p class="card-name">Utility Shorts</p>
-            <p class="card-price">UGX 55,000</p>
-          </div>
-        </a>
-
-        <a href="product.html" class="product-card">
-          <div class="card-img-wrap">
-            <img src="https://picsum.photos/seed/aura5/400/500" alt="Cap">
-            <span class="card-badge">NEW</span>
-          </div>
-          <div class="card-info">
-            <p class="card-name">Aura Logo Cap</p>
-            <p class="card-price">UGX 35,000</p>
-          </div>
-        </a>
-
-        <a href="product.html" class="product-card">
-          <div class="card-img-wrap">
-            <img src="https://picsum.photos/seed/aura6/400/500" alt="Jacket">
-          </div>
-          <div class="card-info">
-            <p class="card-name">Lightweight Coach Jacket</p>
-            <p class="card-price">UGX 120,000</p>
-          </div>
-        </a>
-
-      </div><!-- end .product-grid -->
-
-      <!-- FOOTER inside the page -->
       <footer class="site-footer">
         <p>© 2025 AURA Store. Uganda.</p>
         <div class="footer-links">
@@ -117,7 +53,147 @@
         </div>
       </footer>
 
-    </div><!-- end .container -->
-  </div><!-- end .frame -->
+    </div>
+  </div>
+
+  <script>
+    // ================================================================
+    // JAVASCRIPT LESSON 1: Arrays and Objects
+    // ================================================================
+    // An ARRAY is a list. You make one with square brackets [].
+    // Each item inside is an OBJECT — a collection of named values.
+    // An object uses curly braces {} and pairs: key: value
+    //
+    // Think of it like a table:
+    //   id | name              | price   | badge | image seed
+    //   1  | Oversized Tee     | 45,000  | NEW   | aura1
+    //   2  | Relaxed Cargos    | 85,000  |       | aura2
+    //   ...and so on
+    //
+    // We store that whole table here as an array of objects.
+    // ================================================================
+
+    const products = [
+      {
+        id: 1,
+        name: "Vintage Tee",
+        price: "UGX 45,000",
+        badge: "NEW",
+        image: src = "D:\\programming stuff\\websites\\aura store\\images\\shirt.jfif",
+        category: "Tops"
+      },
+      {
+        id: 2,
+        name: "Relaxed Cargo Pants",
+        price: "UGX 85,000",
+        badge: "",
+        image: src = "D:\\programming stuff\\websites\\aura store\\images\\baggypants.jfif",
+        category: "Bottoms"
+      },
+      {
+        id: 3,
+        name: "Washed Pullover Hoodie",
+        price: "UGX 95,000",
+        badge: "HOT",
+        image: src = "D:\\programming stuff\\websites\\aura store\\images\\hoodie.jfif",
+        category: "Tops"
+      },
+      {
+        id: 4,
+        name: "Jorts",
+        price: "UGX 55,000",
+        badge: "",
+        image: src = "D:\\programming stuff\\websites\\aura store\\images\\shorts.jfif",
+        category: "Bottoms"
+      },
+      {
+        id: 5,
+        name: "Custom Cap",
+        price: "UGX 35,000",
+        badge: "NEW",
+        image: src = "D:\\programming stuff\\websites\\aura store\\images\\cap.jfif",
+        category: "Accessories"
+      },
+      {
+        id: 6,
+        name: "Lightweight Coach Jacket",
+        price: "UGX 120,000",
+        badge: "",
+        image: src = "D:\\programming stuff\\websites\\aura store\\images\\jacket.jfif",
+        category: "Outerwear"
+      }
+    ];
+
+    // ================================================================
+    // JAVASCRIPT LESSON 2: Getting an element & innerHTML
+    // ================================================================
+    // document.getElementById("product-grid") finds the <div id="product-grid">
+    // in our HTML above. We store it in a variable called 'grid'.
+    // A variable is just a named box that holds a value.
+    // We use 'const' when the variable won't be reassigned.
+    // ================================================================
+
+    const grid = document.getElementById("product-grid");
+
+    // ================================================================
+    // JAVASCRIPT LESSON 3: Loops — forEach
+    // ================================================================
+    // products.forEach(...) means: "for each product in the list, do this"
+    // The word 'product' inside the parentheses is just a name we pick —
+    // it represents ONE product at a time as the loop goes through the list.
+    // Each time the loop runs, 'product' is a different item from the array.
+    // ================================================================
+
+    products.forEach(function(product) {
+
+      // ================================================================
+      // JAVASCRIPT LESSON 4: Template Literals (backtick strings)
+      // ================================================================
+      // Normal strings use quotes: "hello"
+      // Template literals use backticks: `hello`
+      // The superpower of backticks: you can embed variables with ${variableName}
+      // So `Hello ${name}` with name="Shaun" becomes "Hello Shaun"
+      //
+      // Here we're building an entire HTML card as a string,
+      // plugging in the product's data where needed.
+      // ================================================================
+
+      // This builds the badge HTML — but ONLY if badge has text.
+      // If badge is "" (empty), badgeHTML will be "" (nothing).
+      // The ? : is called a "ternary operator" — a short if/else:
+      //   condition ? "value if true" : "value if false"
+      const badgeHTML = product.badge
+        ? `<span class="card-badge">${product.badge}</span>`
+        : "";
+
+      // Now build the full card HTML as a string.
+      // Notice the link: href="product.html?id=${product.id}"
+      // For product with id=1, this becomes: href="product.html?id=1"
+      // For product with id=2: href="product.html?id=2"  ...and so on.
+      const cardHTML = `
+        <a href="product.html?id=${product.id}" class="product-card">
+          <div class="card-img-wrap">
+            <img src="${product.image}" alt="${product.name}">
+            ${badgeHTML}
+          </div>
+          <div class="card-info">
+            <p class="card-name">${product.name}</p>
+            <p class="card-price">${product.price}</p>
+          </div>
+        </a>
+      `;
+
+      // ================================================================
+      // JAVASCRIPT LESSON 5: innerHTML and +=
+      // ================================================================
+      // grid.innerHTML is the HTML INSIDE our product-grid div.
+      // += means "add to what's already there" (don't replace, append).
+      // So each loop adds one more card to the grid.
+      // ================================================================
+
+      grid.innerHTML += cardHTML;
+    });
+
+  </script>
 </body>
 </html>
